@@ -1,0 +1,104 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ack-eks-controller
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  - secrets
+  verbs:
+  - get
+  - list
+  - patch
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ec2.services.k8s.aws
+  resources:
+  - securitygroups
+  - securitygroups/status
+  - subnets
+  - subnets/status
+  verbs:
+  - get
+  - list
+- apiGroups:
+  - eks.services.k8s.aws
+  resources:
+  - accessentries
+  - addons
+  - clusters
+  - fargateprofiles
+  - identityproviderconfigs
+  - nodegroups
+  - podidentityassociations
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - eks.services.k8s.aws
+  resources:
+  - accessentries/status
+  - addons/status
+  - clusters/status
+  - fargateprofiles/status
+  - identityproviderconfigs/status
+  - nodegroups/status
+  - podidentityassociations/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - iam.services.k8s.aws
+  resources:
+  - roles
+  - roles/status
+  verbs:
+  - get
+  - list
+- apiGroups:
+  - kms.services.k8s.aws
+  resources:
+  - keys
+  - keys/status
+  verbs:
+  - get
+  - list
+- apiGroups:
+  - services.k8s.aws
+  resources:
+  - adoptedresources
+  - fieldexports
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - services.k8s.aws
+  resources:
+  - adoptedresources/status
+  - fieldexports/status
+  verbs:
+  - get
+  - patch
+  - update
